@@ -1,0 +1,104 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>RadRed 2.3 Changes</title>
+		<link rel="icon" href="./favicon.png">
+		<link rel="stylesheet" type="text/css" href="./style.css">
+		<script type="text/javascript" src="./radredpokedex.js"></script>
+		<script type="text/javascript" src="./smogonpokedex.js"></script>
+		<script>
+			var excluded = ['num', 'tier', 'battleOnly',
+				'evos', 'prevo', 'evoLevel', 'evoItem', 'evoType', 'evoCondition', 'requiredItem', 'requiredMove',
+				'otherFormes', 'formeOrder', 'changesFrom'];
+			var changedPokemon = [];
+			
+			function typeColor (type) {
+				return '<span class="' + type.toLowerCase() + ' bold">' + type + '</span>';
+			}
+			
+			function typesStr (types) {
+				return typeColor(types['0']) + ((types['1']) ? ' / ' + typeColor(types['1']) : '');  
+			}
+			
+			function abilitiesStr (abilities) {
+				var str = (abilities['0']) ? '<u>' + abilities['0'] + '</u>' : '';
+				str += (abilities['1']) ? ((str === '') ? '<u>' + abilities['1'] + '</u>' : ' | ' + '<u>' + abilities['1'] + '</u>') : '';
+				str += (abilities['H']) ? ((str === '') ? '<u>' + abilities['H'] + '</u> [H]' : ' | ' + '<u>' + abilities['H'] + '</u> [H]') : '';
+				return (str === '') ? 'None' : str; 
+			}
+			
+			function refresh () {
+				// name, types, heightm, weightkg, genderRatio/gender, abilities, baseStats
+				var str = '';
+				for (var i = 0; i < changedPokemon.length; i++) {
+					var radredPokemon = changedPokemon[i].replace('gmax', 'mega');
+					var smogon = SmogonPokedex[changedPokemon[i]];
+					var radred = RadRedPokedex[radredPokemon];
+					if (radred) {
+						str += '<details class="details">' +
+								'<summary class="name">' + smogon['name'] + '</summary>' +
+								'<div class="data">' +
+									'<div class="poison bold">Smogon</div>' +
+									'<div>' + typesStr(smogon['types']) + '</div>' +
+									'<div>' + abilitiesStr(smogon['abilities']) + '</div>' +
+									'<div>Base stats:</div>' +
+									'<div>&nbsp;HP: ' + smogon['baseStats']['hp'] + '</div>' +
+									'<div>ATK: ' + smogon['baseStats']['atk'] + '</div>' +
+									'<div>DEF: ' + smogon['baseStats']['def'] + '</div>' +
+									'<div>SPA: ' + smogon['baseStats']['spa'] + '</div>' +
+									'<div>SPD: ' + smogon['baseStats']['spd'] + '</div>' +
+									'<div>SPE: ' + smogon['baseStats']['spe'] + '</div>' +
+									'<div><a href="https://dex.pokemonshowdown.com/pokemon/' + smogon['name'] + '" target="_blank">more..</a></div>' +
+								'</div>' +
+								'<div class="data">' +
+									'<div class="fighting bold">RadRed</div>' +
+									'<div>' + typesStr(radred['types']) + '</div>' +
+									'<div>' + abilitiesStr(radred['abilities']) + '</div>' +
+									'<div>Base stats:</div>' +
+									'<div>&nbsp;HP: ' + radred['baseStats']['hp'] + '</div>' +
+									'<div>ATK: ' + radred['baseStats']['atk'] + '</div>' +
+									'<div>DEF: ' + radred['baseStats']['def'] + '</div>' +
+									'<div>SPA: ' + radred['baseStats']['spa'] + '</div>' +
+									'<div>SPD: ' + radred['baseStats']['spd'] + '</div>' +
+									'<div>SPE: ' + radred['baseStats']['spe'] + '</div>' +
+									'<div><a href="https://dex.radicalred.net/pokemon/' + radred['name'] + '" target="_blank">more..</a></div>' +
+								'</div>' +
+							'</details>';
+					}
+				}
+				
+				document.getElementById("res").innerHTML = str;
+			}
+			
+			document.addEventListener('DOMContentLoaded', function() {
+				for (var pokemon in SmogonPokedex) {
+					//console.log(SmogonPokedex[pokemon]['name']);
+					// start by making rrpokemon the copy of pokemon
+					var rrpokemon = pokemon;
+					if (pokemon.includes('gmax')) {
+						// if name in Smogon includes 'gmax' then the RadRed counterpart is 'mega'
+						rrpokemon = pokemon.replace('gmax', 'mega'); 
+						// but if mega also exist in Smogon, then the mega in Smogon should be used for comparison
+						if (rrpokemon in SmogonPokedex) pokemon = rrpokemon;
+					}
+					if (rrpokemon in RadRedPokedex) {
+						for (var data in SmogonPokedex[pokemon]) {
+							if (data in RadRedPokedex[rrpokemon]) {
+								if (JSON.stringify(SmogonPokedex[pokemon][data]) !== JSON.stringify(RadRedPokedex[rrpokemon][data]) && !excluded.includes(data)) {
+									//console.log(j + ' ' + SmogonPokedex[pokemon]["name"]);
+									if (!changedPokemon.includes(pokemon)) changedPokemon.push(pokemon);
+								}
+							}
+						}
+					}
+				}
+				
+				refresh();
+				
+			}, false);
+		</script>
+	</head>
+	<body>
+		<div id="res"></div>
+	</body>
+</html>
