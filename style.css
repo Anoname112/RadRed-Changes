@@ -21,6 +21,13 @@ body {
 }
 .bold {
 	font-weight: bold;
+
+}
+.red {
+	color: #c22;
+}
+.green {
+	color: #2c2;
 }
 .normal {
 	color: #A8A77A;
