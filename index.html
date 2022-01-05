@@ -27,6 +27,12 @@
 				return (str === '') ? 'None' : str; 
 			}
 			
+			function statStr (smogonstat, radredstat) {
+				if (smogonstat > radredstat) return '<span class="red bold">' + radredstat + '</span>';
+				else if (smogonstat < radredstat) return '<span class="green bold">' + radredstat + '</span>';
+				else return radredstat;
+			}
+			
 			function refresh () {
 				// name, types, heightm, weightkg, genderRatio/gender, abilities, baseStats
 				var str = '';
@@ -55,12 +61,12 @@
 									'<div>' + typesStr(radred['types']) + '</div>' +
 									'<div>' + abilitiesStr(radred['abilities']) + '</div>' +
 									'<div>Base stats:</div>' +
-									'<div>&nbsp;HP: ' + radred['baseStats']['hp'] + '</div>' +
-									'<div>ATK: ' + radred['baseStats']['atk'] + '</div>' +
-									'<div>DEF: ' + radred['baseStats']['def'] + '</div>' +
-									'<div>SPA: ' + radred['baseStats']['spa'] + '</div>' +
-									'<div>SPD: ' + radred['baseStats']['spd'] + '</div>' +
-									'<div>SPE: ' + radred['baseStats']['spe'] + '</div>' +
+									'<div>&nbsp;HP: ' + statStr(smogon['baseStats']['hp'], radred['baseStats']['hp']) + '</div>' +
+									'<div>ATK: ' + statStr(smogon['baseStats']['atk'], radred['baseStats']['atk']) + '</div>' +
+									'<div>DEF: ' + statStr(smogon['baseStats']['def'], radred['baseStats']['def']) + '</div>' +
+									'<div>SPA: ' + statStr(smogon['baseStats']['spa'], radred['baseStats']['spa']) + '</div>' +
+									'<div>SPD: ' + statStr(smogon['baseStats']['spd'], radred['baseStats']['spd']) + '</div>' +
+									'<div>SPE: ' + statStr(smogon['baseStats']['spe'], radred['baseStats']['spe']) + '</div>' +
 									'<div><a href="https://dex.radicalred.net/pokemon/' + radred['name'] + '" target="_blank">more..</a></div>' +
 								'</div>' +
 							'</details>';
