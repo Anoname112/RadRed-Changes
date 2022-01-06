@@ -9,6 +9,7 @@ body {
 #top {
 	padding: 20px;
 	background: #777;
+	border-bottom: 1px solid #333;
 }
 #filter {
 	width: 500px;
