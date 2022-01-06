@@ -21,11 +21,11 @@ body {
 	float: left;
 	background: #ccc;
 	margin: 3px;
-	padding: 6px;
 }
 .name {
 	font-family: "Roboto Mono", "Consolas", "Courier New", "Tahoma";
 	font-size: 14px;
+	padding: 6px;
 }
 .data {
 	float: left;
