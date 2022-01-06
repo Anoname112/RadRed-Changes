@@ -15,17 +15,18 @@ body {
 	width: 500px;
 }
 #res {
+	overflow: auto;
 	padding: 10px;
 }
 .details {
 	float: left;
-	background: #ccc;
 	margin: 3px;
+	background: #ccc;
 }
 .name {
+	padding: 6px;
 	font-family: "Roboto Mono", "Consolas", "Courier New", "Tahoma";
 	font-size: 14px;
-	padding: 6px;
 }
 .data {
 	float: left;
@@ -37,7 +38,6 @@ body {
 }
 .bold {
 	font-weight: bold;
-
 }
 .red {
 	color: #c22;
