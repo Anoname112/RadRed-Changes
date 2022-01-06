@@ -35,12 +35,13 @@
 			
 			function refresh () {
 				// name, types, heightm, weightkg, genderRatio/gender, abilities, baseStats
+				var f = document.getElementById('filter').value.toLowerCase();
 				var str = '';
 				for (var i = 0; i < changedPokemon.length; i++) {
 					var radredPokemon = changedPokemon[i].replace('gmax', 'mega');
 					var smogon = SmogonPokedex[changedPokemon[i]];
 					var radred = RadRedPokedex[radredPokemon];
-					if (radred) {
+					if (radred && radred['name'].toLowerCase().includes(f)) {
 						str += '<details class="details">' +
 								'<summary class="name">' + smogon['name'] + '</summary>' +
 								'<div class="data">' +
@@ -76,22 +77,24 @@
 				document.getElementById("res").innerHTML = str;
 			}
 			
+			function filterChanged () {
+				refresh();
+			}
+			
 			document.addEventListener('DOMContentLoaded', function() {
 				for (var pokemon in SmogonPokedex) {
-					//console.log(SmogonPokedex[pokemon]['name']);
 					// start by making rrpokemon the copy of pokemon
+					// if name in Smogon includes 'gmax' then the RadRed counterpart is 'mega'
+					// but if mega also exist in Smogon, then the mega in Smogon should be used for comparison
 					var rrpokemon = pokemon;
 					if (pokemon.includes('gmax')) {
-						// if name in Smogon includes 'gmax' then the RadRed counterpart is 'mega'
 						rrpokemon = pokemon.replace('gmax', 'mega'); 
-						// but if mega also exist in Smogon, then the mega in Smogon should be used for comparison
 						if (rrpokemon in SmogonPokedex) pokemon = rrpokemon;
 					}
 					if (rrpokemon in RadRedPokedex) {
 						for (var data in SmogonPokedex[pokemon]) {
 							if (data in RadRedPokedex[rrpokemon]) {
 								if (JSON.stringify(SmogonPokedex[pokemon][data]) !== JSON.stringify(RadRedPokedex[rrpokemon][data]) && !excluded.includes(data)) {
-									//console.log(j + ' ' + SmogonPokedex[pokemon]["name"]);
 									if (!changedPokemon.includes(pokemon)) changedPokemon.push(pokemon);
 								}
 							}
@@ -100,11 +103,17 @@
 				}
 				
 				refresh();
+				document.getElementById('filter').focus();
 				
 			}, false);
 		</script>
 	</head>
 	<body>
-		<div id="res"></div>
+		<div id="wrapper">
+			<div id="top">
+				<input type="text" id="filter" placeholder="filter here.." autocomplete="off" oninput="filterChanged()" />
+			</div>
+			<div id="res"></div>
+		</div>
 	</body>
 </html>
