@@ -3,46 +3,60 @@ body {
 	padding: 0;
 	background: #555;
 }
+
 #wrapper {
 	
 }
+
 #top {
-	overflow: auto;
 	padding: 10px;
 	background: #777;
 	border-bottom: 1px solid #333;
+	display: grid;
+	grid-template-areas: 'filter icons';
 }
+
 #filter {
-	float: left;
+	grid-area: filter;
 	margin: 10px;
-	width: 500px;
 }
+
 #res {
 	overflow: auto;
 	padding: 10px;
 }
+
+.icons {
+	grid-area: icons;
+}
+
 .icon {
 	float: left;
 	margin: 10px;
 	width: 22px;
 	opacity: 0.5;
 }
+
 .icon:hover {
 	opacity: 1;
 }
+
 .details {
 	float: left;
 	margin: 3px;
 	background: #ccc;
 }
+
 .details:hover {
 	background: #aaa;
 }
+
 .name {
 	padding: 6px;
 	font-family: "Roboto Mono", "Consolas", "Courier New", "Tahoma";
 	font-size: 14px;
 }
+
 .data {
 	float: left;
 	margin: 2px;
@@ -51,66 +65,89 @@ body {
 	font-Size: 13px;
 	background: #eee;
 }
+
 .bold {
 	font-weight: bold;
 }
+
 .red {
 	color: #c22;
 }
+
 .green {
 	color: #2c2;
 }
+
 .normal {
 	color: #A8A77A;
 }
+
 .fire {
 	color: #EE8130;
 }
+
+
 .water {
 	color: #6390F0;
 }
+
+
 .electric {
 	color: #F7D02C;
 }
+
 .grass {
 	color: #7AC74C;
 }
+
 .ice {
 	color: #96D9D6;
 }
+
 .fighting {
 	color: #C22E28;
 }
+
 .poison {
 	color: #A33EA1;
 }
+
 .ground {
 	color: #E2BF65;
 }
+
 .flying {
 	color: #A98FF3;
 }
+
 .psychic {
 	color: #F95587;
 }
+
 .bug {
 	color: #A6B91A;
 }
+
 .rock {
 	color: #B6A136;
 }
+
 .ghost {
 	color: #735797;
 }
+
 .dragon {
 	color: #6F35FC;
 }
+
 .dark {
 	color: #705746;
 }
+
 .steel {
 	color: #B7B7CE;
 }
+
 .fairy {
 	color: #D685AD;
 }
