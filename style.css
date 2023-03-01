@@ -53,7 +53,7 @@ body {
 
 .name {
 	padding: 6px;
-	font-family: "Consolas", "Roboto Mono", "Courier New", "Tahoma";
+	font-family: "Tahoma", "Trebuchet MS", "Consolas", "Roboto Mono", "Courier New";
 	font-size: 14px;
 }
 
@@ -61,9 +61,24 @@ body {
 	float: left;
 	margin: 2px;
 	padding: 3px;
-	font-family: "Consolas", "Roboto Mono", "Courier New", "Tahoma";
+	font-family: "Tahoma", "Trebuchet MS", "Consolas", "Roboto Mono", "Courier New";
 	font-Size: 13px;
 	background: #eee;
+}
+
+.stats, .stats tr, .stats tr td {
+	margin: 0;
+	padding: 0;
+	font-family: "Consolas", "Roboto Mono", "Consolas", "Courier New";
+	font-size: 13px;
+}
+
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
 }
 
 .bold {

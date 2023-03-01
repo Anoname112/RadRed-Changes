@@ -37,12 +37,14 @@ function refresh () {
 						'<div>' + typesStr(smogon['types']) + '</div>' +
 						'<div>' + abilitiesStr(smogon['abilities']) + '</div>' +
 						'<div>Base stats:</div>' +
-						'<div>&nbsp;HP: ' + smogon['baseStats']['hp'] + '</div>' +
-						'<div>ATK: ' + smogon['baseStats']['atk'] + '</div>' +
-						'<div>DEF: ' + smogon['baseStats']['def'] + '</div>' +
-						'<div>SPA: ' + smogon['baseStats']['spa'] + '</div>' +
-						'<div>SPD: ' + smogon['baseStats']['spd'] + '</div>' +
-						'<div>SPE: ' + smogon['baseStats']['spe'] + '</div>' +
+						'<table class="stats">' +
+							'<tr><td class="right">HP:</td><td class="left">&nbsp;' + smogon['baseStats']['hp'] + '</td></tr>' +
+							'<tr><td class="right">ATK:</td><td class="left">&nbsp;' + smogon['baseStats']['atk'] + '</td></tr>' +
+							'<tr><td class="right">DEF:</td><td class="left">&nbsp;' + smogon['baseStats']['def'] + '</td></tr>' +
+							'<tr><td class="right">SPA:</td><td class="left">&nbsp;' + smogon['baseStats']['spa'] + '</td></tr>' +
+							'<tr><td class="right">SPD:</td><td class="left">&nbsp;' + smogon['baseStats']['spd'] + '</td></tr>' +
+							'<tr><td class="right">SPE:</td><td class="left">&nbsp;' + smogon['baseStats']['spe'] + '</td></tr>' +
+						'</table>' +
 						'<div><a href="https://dex.pokemonshowdown.com/pokemon/' + smogon['name'] + '" target="_blank">more..</a></div>' +
 					'</div>' +
 					'<div class="data">' +
@@ -50,12 +52,14 @@ function refresh () {
 						'<div>' + typesStr(radred['types']) + '</div>' +
 						'<div>' + abilitiesStr(radred['abilities']) + '</div>' +
 						'<div>Base stats:</div>' +
-						'<div>&nbsp;HP: ' + statStr(smogon['baseStats']['hp'], radred['baseStats']['hp']) + '</div>' +
-						'<div>ATK: ' + statStr(smogon['baseStats']['atk'], radred['baseStats']['atk']) + '</div>' +
-						'<div>DEF: ' + statStr(smogon['baseStats']['def'], radred['baseStats']['def']) + '</div>' +
-						'<div>SPA: ' + statStr(smogon['baseStats']['spa'], radred['baseStats']['spa']) + '</div>' +
-						'<div>SPD: ' + statStr(smogon['baseStats']['spd'], radred['baseStats']['spd']) + '</div>' +
-						'<div>SPE: ' + statStr(smogon['baseStats']['spe'], radred['baseStats']['spe']) + '</div>' +
+						'<table class="stats">' +
+							'<tr><td class="right">HP:</td><td class="left">&nbsp;' + statStr(smogon['baseStats']['hp'], radred['baseStats']['hp']) + '</td></tr>' +
+							'<tr><td class="right">ATK:</td><td class="left">&nbsp;' + statStr(smogon['baseStats']['atk'], radred['baseStats']['atk']) + '</td></tr>' +
+							'<tr><td class="right">DEF:</td><td class="left">&nbsp;' + statStr(smogon['baseStats']['def'], radred['baseStats']['def']) + '</td></tr>' +
+							'<tr><td class="right">SPA:</td><td class="left">&nbsp;' + statStr(smogon['baseStats']['spa'], radred['baseStats']['spa']) + '</td></tr>' +
+							'<tr><td class="right">SPD:</td><td class="left">&nbsp;' + statStr(smogon['baseStats']['spd'], radred['baseStats']['spd']) + '</td></tr>' +
+							'<tr><td class="right">SPE:</td><td class="left">&nbsp;' + statStr(smogon['baseStats']['spe'], radred['baseStats']['spe']) + '</td></tr>' +
+						'</table>' +
 						'<div><a href="https://dex.radicalred.net/pokemon/' + radred['name'] + '" target="_blank">more..</a></div>' +
 					'</div>' +
 				'</details>';
