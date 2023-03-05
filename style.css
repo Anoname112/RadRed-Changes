@@ -51,6 +51,7 @@ body {
 
 .details:hover {
 	background: #aaa;
+	cursor: pointer;
 }
 
 .name {
