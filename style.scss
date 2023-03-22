@@ -1,0 +1,178 @@
+$bodyPadding: 10px;
+$topMargin: 10px;
+$monoSpace: "Consolas", "Roboto Mono", "Consolas", "Courier New";
+$dataPadding: 3px;
+$dataFontFamily: "Tahoma", "Trebuchet MS", "Consolas", "Roboto Mono", "Courier New";
+$dataFontSize: 13px;
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #555555;
+}
+
+#wrapper {
+	
+}
+
+#top {
+	padding: $bodyPadding;
+	background: #777777;
+	border-bottom: 1px solid #333333;
+	display: grid;
+	grid-template-areas: 'filter icons';
+}
+
+#filter {
+	grid-area: filter;
+	margin: $topMargin;
+}
+
+#res {
+	overflow: auto;
+	padding: $bodyPadding;
+}
+
+.icons {
+	grid-area: icons;
+}
+
+.icon {
+	float: left;
+	margin: $topMargin;
+	width: 22px;
+	opacity: 0.5;
+}
+
+.icon:hover {
+	cursor: pointer;
+	opacity: 1;
+	transition: opacity 0.5;
+}
+
+.details {
+	float: left;
+	margin: 3px;
+	background: #CCCCCC;
+}
+
+.details:hover {
+	background: #AAAAAA;
+	cursor: pointer;
+}
+
+.name {
+	padding: $dataPadding * 2;
+	font-family: $dataFontFamily;
+	font-size: $dataFontSize + 1;
+}
+
+.data {
+	float: left;
+	margin: 2px;
+	padding: $dataPadding;
+	font-family: $dataFontFamily;
+	font-size: $dataFontSize;
+	background: #EEEEEE;
+}
+
+.stats, .stats tr, .stats tr td {
+	margin: 0;
+	padding: 0;
+	font-family: $monoSpace;
+	font-size: $dataFontSize;
+}
+
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.red {
+	color: #CC2222;
+}
+
+.green {
+	color: #22CC22;
+}
+
+.normal {
+	color: #A8A77A;
+}
+
+.fire {
+	color: #EE8130;
+}
+
+
+.water {
+	color: #6390F0;
+}
+
+
+.electric {
+	color: #F7D02C;
+}
+
+.grass {
+	color: #7AC74C;
+}
+
+.ice {
+	color: #96D9D6;
+}
+
+.fighting {
+	color: #C22E28;
+}
+
+.poison {
+	color: #A33EA1;
+}
+
+.ground {
+	color: #E2BF65;
+}
+
+.flying {
+	color: #A98FF3;
+}
+
+.psychic {
+	color: #F95587;
+}
+
+.bug {
+	color: #A6B91A;
+}
+
+.rock {
+	color: #B6A136;
+}
+
+.ghost {
+	color: #735797;
+}
+
+.dragon {
+	color: #6F35FC;
+}
+
+.dark {
+	color: #705746;
+}
+
+.steel {
+	color: #B7B7CE;
+}
+
+.fairy {
+	color: #D685AD;
+}
