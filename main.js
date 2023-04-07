@@ -1,5 +1,31 @@
 var changedPokemon = [];
 
+window.onload = function () {
+	for (var pokemon in SmogonPokedex) {
+		// start by making rrpokemon the copy of pokemon
+		// if name in Smogon includes 'gmax' then the RadRed counterpart is 'mega'
+		// but if mega also exist in Smogon, then the mega in Smogon should be used for comparison
+		var rrpokemon = pokemon;
+		if (pokemon.includes('gmax')) {
+			rrpokemon = pokemon.replace('gmax', 'mega'); 
+			if (rrpokemon in SmogonPokedex) pokemon = rrpokemon;
+		}
+		if (rrpokemon in RadRedPokedex) {
+			for (var data in SmogonPokedex[pokemon]) {
+				if (data in RadRedPokedex[rrpokemon]) {
+					if (JSON.stringify(SmogonPokedex[pokemon][data]) !== JSON.stringify(RadRedPokedex[rrpokemon][data]) && !excluded.includes(data)) {
+						if (!changedPokemon.includes(pokemon)) changedPokemon.push(pokemon);
+					}
+				}
+			}
+		}
+	}
+	
+	refresh();
+	document.getElementById('filter').focus();
+	
+}
+
 function typeColor (type) {
 	return '<span class="' + type.toLowerCase() + ' bold">' + type + '</span>';
 }
@@ -19,6 +45,18 @@ function statStr (smogonstat, radredstat) {
 	if (smogonstat > radredstat) return '<span class="red bold">' + radredstat + '</span>';
 	else if (smogonstat < radredstat) return '<span class="green bold">' + radredstat + '</span>';
 	else return radredstat;
+}
+
+function filterChanged () {
+	refresh();
+}
+
+function showHide(bool) {
+	const details = document.getElementById("res").querySelectorAll("details");
+	
+	details.forEach(function (detail) {
+		detail.open = bool;
+	});
 }
 
 function refresh () {
@@ -68,41 +106,3 @@ function refresh () {
 	
 	document.getElementById("res").innerHTML = str;
 }
-
-function filterChanged () {
-	refresh();
-}
-
-function showHide(bool) {
-	const details = document.getElementById("res").querySelectorAll("details");
-	
-	details.forEach(function(detail) {
-		detail.open = bool;
-	});
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-	for (var pokemon in SmogonPokedex) {
-		// start by making rrpokemon the copy of pokemon
-		// if name in Smogon includes 'gmax' then the RadRed counterpart is 'mega'
-		// but if mega also exist in Smogon, then the mega in Smogon should be used for comparison
-		var rrpokemon = pokemon;
-		if (pokemon.includes('gmax')) {
-			rrpokemon = pokemon.replace('gmax', 'mega'); 
-			if (rrpokemon in SmogonPokedex) pokemon = rrpokemon;
-		}
-		if (rrpokemon in RadRedPokedex) {
-			for (var data in SmogonPokedex[pokemon]) {
-				if (data in RadRedPokedex[rrpokemon]) {
-					if (JSON.stringify(SmogonPokedex[pokemon][data]) !== JSON.stringify(RadRedPokedex[rrpokemon][data]) && !excluded.includes(data)) {
-						if (!changedPokemon.includes(pokemon)) changedPokemon.push(pokemon);
-					}
-				}
-			}
-		}
-	}
-	
-	refresh();
-	document.getElementById('filter').focus();
-	
-}, false);
