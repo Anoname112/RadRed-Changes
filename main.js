@@ -51,7 +51,7 @@ function filterChanged () {
 	refresh();
 }
 
-function showHide(bool) {
+function showHide (bool) {
 	const details = document.getElementById("res").querySelectorAll("details");
 	
 	details.forEach(function (detail) {
