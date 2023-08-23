@@ -1,5 +1,5 @@
 # RadRed-Changes
-List of changes on Pokemon in Radical Red v2.3
+List of changes on Pokemon in Radical Red v2.3.
 
 Live Demo: https://anoname112.github.io/RadRed-Changes/
 <br /><br />
